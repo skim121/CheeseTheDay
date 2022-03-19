@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+List of Cheeses
+{% endblock %}
+
+{% block content %}
+
+<h1> The Ultimate Cheese Guide </h1>
+<h3> A comprehensive listing of various cheese around the world</h3>
+
+    {% for cheese in cheeses %}
+    <div class="cheesebox">
+        <h4> Name: {{cheese.name}} </h4>
+        <h5> Type: {{cheese.type}} </h5>
+        <h5> Milk: {{cheese.milk}} </h5>
+    </div>
+    {% endfor %}
+{% endblock %}
