@@ -4,10 +4,12 @@ List of Cheeses
 {% endblock %}
 
 {% block content %}
+<div class="cheeseheader">
+    <h1> The Ultimate Cheese Guide </h1>
+    <h3> A comprehensive listing of various cheese around the world</h3>
+</div>
 
-<h1> The Ultimate Cheese Guide </h1>
-<h3> A comprehensive listing of various cheese around the world</h3>
-
+<div class="cheesecontainer">
     {% for cheese in cheeses %}
     <div class="cheesebox">
         <h4> Name: {{cheese.name}} </h4>
@@ -15,4 +17,5 @@ List of Cheeses
         <h5> Milk: {{cheese.milk}} </h5>
     </div>
     {% endfor %}
+</div>
 {% endblock %}
