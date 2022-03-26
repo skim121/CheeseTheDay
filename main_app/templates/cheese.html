@@ -4,17 +4,32 @@ List of Cheeses
 {% endblock %}
 
 {% block content %}
+
 <div class="cheeseheader">
     <h1> The Ultimate Cheese Guide </h1>
     <h3> A comprehensive listing of various cheese around the world</h3>
 </div>
 
+<div class="searchbar">
+    <form>
+        <div>
+            <input type="text" name="name" placeholder="name"/>
+            <input type = "submit" value="Search"/>
+        </div>
+        <a href="{% url 'cheeses' %}">Clear Search</a> 
+    </form>
+</div>
+
 <div class="cheesecontainer">
+    <h2>{{header}}</h2>
+    <a href="{% url 'cheese_create' %}">Add Cheese</a>
     {% for cheese in cheeses %}
     <div class="cheesebox">
         <h4> Name: {{cheese.name}} </h4>
         <h5> Type: {{cheese.type}} </h5>
         <h5> Milk: {{cheese.milk}} </h5>
+        <h5> Country of Origin: {{cheese.origin}} </h5>
+        <img src="{{cheese.img}}" alt="picture of {{cheese.name}}">
     </div>
     {% endfor %}
 </div>
