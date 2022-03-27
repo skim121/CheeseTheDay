@@ -71,3 +71,8 @@ class CheeseUpdate(UpdateView):
     template_name = "cheese_update.html"
     def get_success_url(self):
         return reverse('cheese_detail', kwargs={'pk': self.object.pk})
+
+class CheeseDelete(DeleteView): 
+    model = Cheese
+    template_name = "cheese_delete_confirm.html"
+    success_url = "/cheeses/"

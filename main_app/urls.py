@@ -7,6 +7,6 @@ urlpatterns = [
     path('cheeses/', views.CheeseList.as_view(), name="cheeses"),
     path('cheese/new/', views.CheeseCreate.as_view(), name="cheese_create"),
     path('cheese/<int:pk>', views.CheeseDetail.as_view(), name="cheese_detail"),
-    path('cheese/<int:pk>/update', views.CheeseUpdate.as_view(), name="cheese_update"),
-
+    path('cheese/<int:pk>/update/', views.CheeseUpdate.as_view(), name="cheese_update"),
+    path('cheese/<int:pk>/delete/', views.CheeseDelete.as_view(), name="cheese_delete"),
 ]

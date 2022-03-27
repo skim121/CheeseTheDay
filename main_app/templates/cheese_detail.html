@@ -12,7 +12,7 @@
    
 <div>
     <a href="{% url 'cheese_update' cheese.pk %}"> Update Cheese Info</a>
-    <a href=""></a>
+    <a href="{% url 'cheese_delete' cheese.pk %}"> Delete </a>
 </div>
 
 {% endblock %}
