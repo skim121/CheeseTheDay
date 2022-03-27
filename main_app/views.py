@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View 
+from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
@@ -57,4 +58,16 @@ class CheeseCreate(CreateView):
     model = Cheese
     fields = ['name', 'type', 'milk', 'origin', 'img']
     template_name="cheese_create.html"
-    success_url="/cheeses/"
+    def get_success_url(self):
+        return reverse('cheese_detail', kwargs={'pk': self.object.pk})
+
+class CheeseDetail(DetailView):
+    model = Cheese
+    template_name = "cheese_detail.html"
+
+class CheeseUpdate(UpdateView):
+    model = Cheese
+    fields = '__all__'
+    template_name = "cheese_update.html"
+    def get_success_url(self):
+        return reverse('cheese_detail', kwargs={'pk': self.object.pk})

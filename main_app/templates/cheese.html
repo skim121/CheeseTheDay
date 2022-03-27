@@ -19,7 +19,7 @@ List of Cheeses
         <a href="{% url 'cheeses' %}">Clear Search</a> 
     </form>
 </div>
-
+<br/>
 <div class="cheesecontainer">
     <h2>{{header}}</h2>
     <a href="{% url 'cheese_create' %}">Add Cheese</a>
@@ -30,6 +30,7 @@ List of Cheeses
         <h5> Milk: {{cheese.milk}} </h5>
         <h5> Country of Origin: {{cheese.origin}} </h5>
         <img src="{{cheese.img}}" alt="picture of {{cheese.name}}">
+        <a href="{% url 'cheese_detail' cheese.pk %}">View Details </a>
     </div>
     {% endfor %}
 </div>

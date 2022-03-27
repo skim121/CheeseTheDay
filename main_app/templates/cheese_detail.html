@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<div>
+    <h4> Name: {{cheese.name}} </h4>
+    <h5> Type: {{cheese.type}} </h5>
+    <h5> Milk: {{cheese.milk}} </h5>
+    <h5> Country of Origin: {{cheese.origin}} </h5>
+    <img src="{{cheese.img}}" alt="picture of {{cheese.name}}">
+</div>
+   
+<div>
+    <a href="{% url 'cheese_update' cheese.pk %}"> Update Cheese Info</a>
+    <a href=""></a>
+</div>
+
+{% endblock %}
