@@ -6,7 +6,7 @@ from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse 
 from .models import Cheese 
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -58,8 +58,11 @@ class CheeseCreate(CreateView):
     model = Cheese
     fields = ['name', 'type', 'milk', 'origin', 'img']
     template_name="cheese_create.html"
-    def get_success_url(self):
-        return reverse('cheese_detail', kwargs={'pk': self.object.pk})
+    def form_valid(self, form): 
+        self.object = form.save(commit=False)
+        self.object.user= self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/cheeses/')
 
 class CheeseDetail(DetailView):
     model = Cheese
@@ -76,3 +79,9 @@ class CheeseDelete(DeleteView):
     model = Cheese
     template_name = "cheese_delete_confirm.html"
     success_url = "/cheeses/"
+
+def profile(request, username): 
+    user = User.objects.get(username=username)
+    cheeses = Cheese.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'cheeses': cheeses})
+    

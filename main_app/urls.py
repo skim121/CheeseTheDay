@@ -9,4 +9,6 @@ urlpatterns = [
     path('cheese/<int:pk>', views.CheeseDetail.as_view(), name="cheese_detail"),
     path('cheese/<int:pk>/update/', views.CheeseUpdate.as_view(), name="cheese_update"),
     path('cheese/<int:pk>/delete/', views.CheeseDelete.as_view(), name="cheese_delete"),
+
+    path('user/<username>/', views.profile, name="profile"),
 ]

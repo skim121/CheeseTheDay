@@ -31,6 +31,9 @@ List of Cheeses
         <h5> Country of Origin: {{cheese.origin}} </h5>
         <img src="{{cheese.img}}" alt="picture of {{cheese.name}}">
         <a href="{% url 'cheese_detail' cheese.pk %}">View Details </a>
+        <p>Cheese Expert: 
+            <a href="/user/{{cheese.user.username}}"> {{cheese.user.username}}</a>
+        </p>
     </div>
     {% endfor %}
 </div>
