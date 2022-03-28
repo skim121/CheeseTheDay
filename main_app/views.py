@@ -34,11 +34,11 @@ class About(TemplateView):
 #     Cheese("Gouda", "semi-firm", "cow"),
 #     Cheese("Gruyere", "semi-firm", "cow"),
 #     Cheese("Asiago", "hard", "cow"), 
-#     Cheese("Manchego", "hard", "cow"),
+#     Cheese("Manchego", "hard", "cow" ),
 #     Cheese("Parmesan", "hard", "cow"),
 #     Cheese("Pecorino", "hard", "sheep"),
-#     Cheese("Gorgonzola", "blue", "cow"),
-#     Cheese("Roquefort", "blue", "sheep"),
+#     Cheese("Gorgonzola", "blue", "cow" ),
+#     Cheese("Roquefort", "blue", "sheep" ),
 # ]
 
 class CheeseList(TemplateView):
@@ -67,7 +67,7 @@ class CheeseDetail(DetailView):
 
 class CheeseUpdate(UpdateView):
     model = Cheese
-    fields = '__all__'
+    fields = ['name', 'type', 'milk', 'origin', 'img']
     template_name = "cheese_update.html"
     def get_success_url(self):
         return reverse('cheese_detail', kwargs={'pk': self.object.pk})
