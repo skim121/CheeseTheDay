@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse 
-from .models import Cheese 
+from .models import Cheese, Wine 
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -84,4 +84,40 @@ def profile(request, username):
     user = User.objects.get(username=username)
     cheeses = Cheese.objects.filter(user=user)
     return render(request, 'profile.html', {'username': username, 'cheeses': cheeses})
-    
+
+# def cattoys_index(request):
+#     cattoys = CatToy.objects.all()
+#     return render(request, 'cattoy_index.html', {'cattoys': cattoys})
+
+# def cattoys_show(request, cattoy_id):
+#     cattoy = CatToy.objects.get(id=cattoy_id)
+#     return render(request, 'cattoy_show.html', {'cattoy': cattoy})
+
+
+class WineList(TemplateView):
+    template_name = "wine.html"
+    def get_context_data(self,**kwargs): 
+        context = super().get_context_data(**kwargs)
+        context['wines'] = wines
+        return context
+
+class WineDetail(DetailView):
+    model = Wine
+    template_name = "wine_detail.html"
+
+class WineCreate(CreateView):
+    model = Wine
+    fields = ['name', 'type', 'sweetness']
+    template_name = "wine_form.html"
+    success_url = '/wines'
+
+class WineUpdate(UpdateView):
+    model = Wine
+    fields = ['name', 'type', 'sweetness']
+    template_name = "wine_update.html"
+    success_url = '/wines'
+
+class WineDelete(DeleteView):
+    model = Wine
+    template_name = "wine_confirm_delete.html"
+    success_url = '/wines'
