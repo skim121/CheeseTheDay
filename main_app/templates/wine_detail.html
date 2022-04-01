@@ -1,0 +1,17 @@
+<!-- templates/cattoy_show.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Details about {{ wine.name }} </h1>
+
+<div>
+    <div>
+        <p>Type: {{ wine.type }}</p>
+        <p>Sweetness: {{ wine.sweetness }}</p>
+    </div>
+    <div>
+        <a href="{% url 'wine_update' wine.id %}">Edit</a>
+        <a href="{% url 'wine_delete' wine.id %}">Delete</a>
+    </div>
+</div>
+{% endblock %}

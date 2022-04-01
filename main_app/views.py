@@ -85,20 +85,11 @@ def profile(request, username):
     cheeses = Cheese.objects.filter(user=user)
     return render(request, 'profile.html', {'username': username, 'cheeses': cheeses})
 
-# def cattoys_index(request):
-#     cattoys = CatToy.objects.all()
-#     return render(request, 'cattoy_index.html', {'cattoys': cattoys})
-
-# def cattoys_show(request, cattoy_id):
-#     cattoy = CatToy.objects.get(id=cattoy_id)
-#     return render(request, 'cattoy_show.html', {'cattoy': cattoy})
-
-
 class WineList(TemplateView):
-    template_name = "wine.html"
+    template_name = "wine_list.html"
     def get_context_data(self,**kwargs): 
         context = super().get_context_data(**kwargs)
-        context['wines'] = wines
+        context['wines'] = Wine.objects.all()
         return context
 
 class WineDetail(DetailView):
