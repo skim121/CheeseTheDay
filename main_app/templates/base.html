@@ -21,13 +21,29 @@
 </head>
 <body>
     <nav>
+        {% if user.is_authenticated %}
+        <span><a href="{% url 'profile' user.username %}">Welcome, {{ user.username }}!</a></span>
+        <span> | </span>
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+        <span> | </span>
+        {% else %}
+        <span><a href="{% url 'login' %}">Login</a></span>
+        <span> | </span>
+        <span><a href="{% url 'signup' %}">Sign-Up</a></span>
+        {% endif %}
+        <span> | </span>
         <a href="/">Home</a>
+        <span> | </span>
         <a href="/about">About</a>
+        <span> | </span>
         <a href="/cheeses">Cheeses</a>
+        <span> | </span>
         <a href="{%url 'cheese_create' %}"> Add Cheese</a>
+        <span> | </span>
         <a href="/wines">Wines</a>
+        <span> | </span>
         <a href="{%url 'wine_create' %}"> Add Wine</a>
-       
+        <span> | </span>
     </nav>
     {% block content %}
     {% endblock %}

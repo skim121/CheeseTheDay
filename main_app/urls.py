@@ -17,4 +17,8 @@ urlpatterns = [
     path('wine/create/', views.WineCreate.as_view(), name='wine_create'),
     path('wine/<int:pk>/update/', views.WineUpdate.as_view(), name='wine_update'),
     path('wine/<int:pk>/delete/', views.WineDelete.as_view(), name='wine_delete'),
+
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('signup/', views.signup_view, name='signup'),
 ]
