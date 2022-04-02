@@ -1,5 +1,12 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
-    <h1> Delete Wine </h1>
-    <h4> Are you sure you want to delete: <strong>{{ wine }}</strong>? </h4>
+    <h1>Delete Wine</h1>
+
+    <h4>Are you sure you want to delete <strong>{{wine}}</strong>?</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes, delete">
+        <a href="{% url 'wine_detail' wine.id %}">Cancel</a>
+    </form>
+
 {% endblock %}
