@@ -44,6 +44,7 @@ class Cheese(models.Model):
     type = models.CharField(max_length=100, choices=TYPE_CHOICES)
     milk = models.CharField(max_length=100, choices = MILK_CHOICES)
     origin = models.CharField(max_length=100)
+    wine = models.ManyToManyField(Wine)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add = True)
 

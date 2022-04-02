@@ -8,6 +8,12 @@
     <div>
         <p>Type: {{ wine.type }}</p>
         <p>Sweetness: {{ wine.sweetness }}</p>
+        <p> Good cheese pairing: </p>
+        {% for cheese in wine.cheese_set.all %}
+        <a href=" {% url 'cheese_detail' cheese.id %}"> {{ cheese.name}} </a>
+        {% empty %}
+            <p> No cheese to pair</p>
+        {% endfor %}
     </div>
     <div>
         <a href="{% url 'wine_update' wine.id %}">Edit</a>

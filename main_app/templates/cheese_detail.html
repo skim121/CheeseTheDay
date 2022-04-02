@@ -8,6 +8,14 @@
     <h5> Milk: {{cheese.milk}} </h5>
     <h5> Country of Origin: {{cheese.origin}} </h5>
     <img src="{{cheese.img}}" alt="picture of {{cheese.name}}">
+
+    {% for wine in cheese.wine.all %}
+    <h4> Good wine pairing: </h4>
+        <a href="{% url 'wine_detail' wine.id %}">{{wine.name}}</a>
+    {% empty %} 
+        <div> No wines yet </div>
+    {% endfor %}
+
 </div>
    
 <div>

@@ -56,7 +56,7 @@ class CheeseList(TemplateView):
 
 class CheeseCreate(CreateView): 
     model = Cheese
-    fields = ['name', 'type', 'milk', 'origin', 'img']
+    fields = ['name', 'type', 'milk', 'origin', 'img', 'wine']
     template_name="cheese_create.html"
     def form_valid(self, form): 
         self.object = form.save(commit=False)
@@ -70,7 +70,7 @@ class CheeseDetail(DetailView):
 
 class CheeseUpdate(UpdateView):
     model = Cheese
-    fields = ['name', 'type', 'milk', 'origin', 'img']
+    fields = ['name', 'type', 'milk', 'origin', 'img', 'wine']
     template_name = "cheese_update.html"
     def get_success_url(self):
         return reverse('cheese_detail', kwargs={'pk': self.object.pk})
